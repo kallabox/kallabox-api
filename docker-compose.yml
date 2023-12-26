@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  kallabox-db:
+    image: ghcr.io/shibme/cg/postgres:15
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: ${KALLABOX_DB_NAME:-kallabox}
+      POSTGRES_USER: ${KALLABOX_DB_USER:-kallabox_db_user}
+      POSTGRES_PASSWORD: ${KALLABOX_DB_PASS:-kallabox_db_password}
+
+  kallabox-api:
+    image: ghcr.io/kallabox/kallabox-api:${KALLABOX_VERSION:-latest}
+    depends_on:
+      - kallabox-db
+    restart: always
+    environment:
+      KALLABOX_DB_HOST: ${KALLABOX_DB_HOST:-kallabox-db}
+      KALLABOX_DB_NAME: ${KALLABOX_DB_NAME:-kallabox}
+      KALLABOX_DB_USER: ${KALLABOX_DB_USER:-kallabox_db_user}
+      KALLABOX_DB_PASS: ${KALLABOX_DB_PASS:-kallabox_db_password}
+      KALLABOX_JWT_SECRET: ${KALLABOX_JWT_SECRET:-kallabox_jwt_secret}
+      KALLABOX_SERVICE_TOKEN: ${KALLABOX_SERVICE_TOKEN:-kallabox_service_token}

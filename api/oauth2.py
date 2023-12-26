@@ -13,11 +13,11 @@ from uuid import UUID
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-jwt_secret = environ("JWT_SECRET")
-jwt_algo = environ("JWT_ALGO")
-jwt_expiry = environ("JWT_EXPIRY")
+jwt_secret = environ("KALLABOX_JWT_SECRET")
+jwt_algo = "HS256"
+jwt_expiry = 5  # minutes
 
-signup_key = environ("SIGNUP_KEY")
+signup_key = environ("KALLABOX_SERVICE_TOKEN")
 
 
 def create_access_token(data: dict):
