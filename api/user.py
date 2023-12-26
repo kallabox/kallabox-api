@@ -12,7 +12,7 @@ from os import environ
 
 router = APIRouter(tags=["Authentication"], prefix="/api")
 
-refresh_token_period = environ("REFRESH_TOKEN_PERIOD")
+refresh_token_period = 604800  # seconds in a week
 
 
 @router.post("/login", response_model=schemas.Token)

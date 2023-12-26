@@ -7,17 +7,17 @@ import api.database as database
 from fastapi import Depends, status, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from os import environ
+import os
 from uuid import UUID
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-jwt_secret = environ("KALLABOX_JWT_SECRET")
+jwt_secret = os.environ.get("KALLABOX_JWT_SECRET")
 jwt_algo = "HS256"
 jwt_expiry = 5  # minutes
 
-signup_key = environ("KALLABOX_SERVICE_TOKEN")
+signup_key = os.environ.get("KALLABOX_SERVICE_TOKEN")
 
 
 def create_access_token(data: dict):

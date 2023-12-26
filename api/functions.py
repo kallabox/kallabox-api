@@ -3,8 +3,8 @@ import random
 import logging
 from os import environ
 
-user_path = environ("USER_LOGGER_PATH")
-sa_path = environ("SA_LOGGER_PATH")
+user_path = environ.get("USER_LOGGER_PATH")
+sa_path = environ.get("SA_LOGGER_PATH")
 
 
 def check_account_name(name: str):
