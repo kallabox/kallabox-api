@@ -1,12 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-import os
+import api.config as config
 
 ### Database file to access and configure postgres
-db_host = os.environ.get("KALLABOX_DB_HOST")
-db_name = os.environ.get("KALLABOX_DB_NAME")
-db_user = os.environ.get("KALLABOX_DB_USER")
-db_pass = os.environ.get("KALLABOX_DB_PASS")
+db_host = config.get_db_host()
+db_name = config.get_db_name()
+db_user = config.get_db_user()
+db_pass = config.get_db_password()
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}"
 

@@ -1,10 +1,9 @@
 from fastapi import status, HTTPException
 import random
 import logging
-from os import environ
 
-user_path = environ.get("USER_LOGGER_PATH")
-sa_path = environ.get("SA_LOGGER_PATH")
+user_path = "logs/user.logs"
+sa_path = "logs/admin.logs"
 
 
 def check_account_name(name: str):

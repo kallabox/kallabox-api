@@ -8,7 +8,6 @@ import api.utils as utils
 import api.oauth2 as oauth2
 import api.functions as fun
 from uuid import uuid4
-from os import environ
 
 router = APIRouter(tags=["Authentication"], prefix="/api")
 
