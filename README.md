@@ -51,7 +51,7 @@ A **Service Administrator** is the highest privileged, and has the functionality
 ## Getting Started
 
 1. Open a new Command Line Interface (CLI).
-2. Make a new directory using named **_kallabox_** using the following command.
+2. Make a new directory named **_kallabox_** using the following command.
 ```
 mkdir kallabox
 ```
