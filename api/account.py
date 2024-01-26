@@ -193,7 +193,7 @@ def add_user(
             email=user_cred.email,
             phone=user_cred.phone,
             password=hashed_password,
-            role="account_admin",
+            role=user_cred.role,
         )  # Creating a new new_user
 
         db.add(new_user)

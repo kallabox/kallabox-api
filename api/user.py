@@ -71,20 +71,6 @@ def login(
             status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Credentials"
         )
 
-    refresh_token_query = (
-        db.query(models.RefreshToken)
-        .filter(
-            models.RefreshToken.account_id == account.account_id,
-            models.RefreshToken.user_id == user.user_id,
-        )
-        .first()
-    )  # Checking for an existing refresh token if user accidentally exits the application
-
-    if (
-        refresh_token_query is not None
-    ):  # If refresh token already exists use that, prevents duplicate entries in the tokens table
-        return {"refresh_token": refresh_token_query.refreshtoken}
-
     refresh_token = (
         fun.create_refresh_token()
     )  # Else create a new refresh token and entering it in the tokens table

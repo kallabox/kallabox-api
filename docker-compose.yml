@@ -4,9 +4,13 @@ services:
 
   kallabox-db:
     image: ghcr.io/shibme/cg/postgres:15
+    container_name: kallabox-db
     volumes:
       - ./data:/var/lib/postgresql/data
     restart: always
+    networks:
+      - kallabox
+
     environment:
       POSTGRES_DB: ${KALLABOX_DB_NAME:-kallabox}
       POSTGRES_USER: ${KALLABOX_DB_USER:-kallabox_db_user}
@@ -14,8 +18,12 @@ services:
 
   kallabox-api:
     image: ghcr.io/kallabox/kallabox-api:${KALLABOX_VERSION:-latest}
+    container_name: kallabox-api
     depends_on:
       - kallabox-db
+    networks:
+      - kallabox
+
     ports:
       - "${KALLABOX_HTTP_PORT:-8888}:8888"
     restart: always
@@ -26,3 +34,8 @@ services:
       KALLABOX_DB_PASS: ${KALLABOX_DB_PASS:-kallabox_db_password}
       KALLABOX_JWT_SECRET: ${KALLABOX_JWT_SECRET:-kallabox_jwt_secret}
       KALLABOX_SERVICE_TOKEN: ${KALLABOX_SERVICE_TOKEN:-kallabox_service_token}
+
+networks:
+  kallabox:
+    name: kallabox-network
+    driver: bridge
