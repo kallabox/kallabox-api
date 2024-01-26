@@ -118,3 +118,7 @@ To checkout the working of the ***Kallabox-API*** in Swagger UI, go to your brow
 ```
 localhost:8888/docs
 ```
+
+### Credits 
+
+To [@shibme](https://github.com/shibme), for guiding me through this project.
