@@ -15,7 +15,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 jwt_secret = config.get_jwt_secret()
 jwt_algo = "HS256"
-jwt_expiry = 5  # minutes
+jwt_expiry = config.get_jwt_expiry()
 
 signup_key = config.get_service_token()
 
