@@ -33,6 +33,7 @@ services:
       KALLABOX_DB_USER: ${KALLABOX_DB_USER:-kallabox_db_user}
       KALLABOX_DB_PASS: ${KALLABOX_DB_PASS:-kallabox_db_password}
       KALLABOX_JWT_SECRET: ${KALLABOX_JWT_SECRET:-kallabox_jwt_secret}
+      KALLABOX_JWT_EXPIRY: ${KALLABOX_JWT_EXPIRY:-1440}
       KALLABOX_SERVICE_TOKEN: ${KALLABOX_SERVICE_TOKEN:-kallabox_service_token}
 
 networks:
