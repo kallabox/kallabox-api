@@ -19,6 +19,20 @@ def get_jwt_secret() -> str:
     except KeyError:
         raise MissingEnvVariable("Environment variable for jwt secret not found")
 
+def get_jwt_expiry() -> str:
+    """Returns the jwt expiry from the env variable or raises an exception if not found"""
+
+    try:
+        jwt_expiry = environ.get("KALLABOX_JWT_EXPIRY")
+
+        if jwt_expiry is None:
+            raise MissingEnvVariable("Environment variable for jwt expiry not found")
+
+        return str(jwt_expiry)
+
+    except KeyError:
+        raise MissingEnvVariable("Environment variable for jwt expiry not found")
+
 
 def get_service_token() -> str:
     """Returns the service token from the env variable or raises an exception if not found"""
