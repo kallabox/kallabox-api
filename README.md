@@ -72,9 +72,9 @@ cd kallabox-api
 docker-compose up -d
 ```
 
-You should be able to see an output like this
+You should be able to see an output like this at the end.
 
-![Kallabox-api success](https://github.com/kallabox/kallabox-tui/assets/102421860/553b5f6a-9e8d-4e54-8ff6-a07b64c07e23)
+![Kallabox-api success](https://github.com/kallabox/kallabox-api/assets/102421860/cbe4e6dc-e965-4e53-9929-288c3763a969)
 
 To verify, type the following command and under the **Containers** section check for 2 containers named **_kallabox-db_** and **_kallabox-api_**. 
 ```
@@ -86,39 +86,43 @@ A sample output is shown below.
 
 Now, the backend of **Kallabox** is up and running.
 
+**Note :-** If you want to access the **_kallabox-api_** on a different port, change the ```${KALLABOX_HTTP_PORT:-8888}:8888``` to ```${KALLABOX_HTTP_PORT:-"Host Port Number"}:"Container Port Number"```
+in the docker-compose.yml file before the ```docker-compose up -d``` command.
+
 ### Stopping containers
 
-To stop the containers, use the following command.
+To stop and remove the containers, use the following command.
 ```
-docker-compose stop
-```
-
-A sample output is shown below.
-
-![Kallabox-api stop](https://github.com/kallabox/kallabox-tui/assets/102421860/56370d9d-76bd-4f12-9b1e-c3d95d824dc7)
-
-
-**Note** :- Deleting the containers instead of stopping them, leads to unrecoverable loss of data within the database inside the containers.
-
-### Starting containers
-
-To start the containers, after stopping, use the following command.
-
-```
-docker-compose start
+docker-compose down
 ```
 
-A sample output is shown below.
+Your output should look something like this at the end.
 
-![Kallabox-api start](https://github.com/kallabox/kallabox-tui/assets/102421860/8ae53354-9c63-458c-863a-5b49c0a16a0e)
+![Kallabox-api stop](https://github.com/kallabox/kallabox-api/assets/102421860/ccbdd409-f369-45ef-8397-162a7b411e85)
 
-### Swagger UI Documentation
+**Note** :- Deleting the containers does not delete the data stored in the database, since **volumes** are used to persist data.
+
+To cleanup the stack and start afresh, use the following command.
+```
+docker-compose down --rmi all --volumes --remove-orphans
+```
+Your output should look something like this at the end.
+
+![Kallabox-api stop](https://github.com/kallabox/kallabox-api/assets/102421860/c2b08d5a-5425-4690-9738-67c516a78a9c)
+
+
+
+
+**Note** :- The above method completely erases all data stored in the database, user caution is advised.
+
+## Swagger UI Documentation
 
 To checkout the working of the ***Kallabox-API*** in Swagger UI, go to your browser and type the following URL when the containers are running.
 ```
 localhost:8888/docs
 ```
 
-### Credits 
+## Credits 
 
 To [@shibme](https://github.com/shibme), for guiding me through this project.
+
