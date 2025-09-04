@@ -69,7 +69,7 @@ cd kallabox-api
 ```
 6. Create and run the docker containers using the following command.
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 You should be able to see an output like this at the end.
@@ -87,13 +87,13 @@ A sample output is shown below.
 Now, the backend of **Kallabox** is up and running.
 
 **Note :-** If you want to access the **_kallabox-api_** on a different port, change the ```${KALLABOX_HTTP_PORT:-8888}:8888``` to ```${KALLABOX_HTTP_PORT:-"Host Port Number"}:"Container Port Number"```
-in the docker-compose.yml file before the ```docker-compose up -d``` command.
+in the docker-compose.yml file before the ```docker compose up -d``` command.
 
 ### Stopping containers
 
 To stop and remove the containers, use the following command.
 ```
-docker-compose down
+docker compose down
 ```
 
 Your output should look something like this at the end.
@@ -104,7 +104,7 @@ Your output should look something like this at the end.
 
 To cleanup the stack and start afresh, use the following command.
 ```
-docker-compose down --rmi all --volumes --remove-orphans
+docker compose down --rmi all --volumes --remove-orphans
 ```
 Your output should look something like this at the end.
 
